@@ -4,12 +4,13 @@
 
 // [-4, -6, 89, 6] -> 0
 
-int[] arr=new int[10];
+int[] arr = new int[10];
 FillArray(arr);
-int[] arrWithOdds=NewArrWithOdds(arr);
-//PrintArray(arr);
-PrintArray(arrWithOdds);
-Console.WriteLine($"Сумма нечетных равна = {SumOdds(arrWithOdds)}");
+PrintArray(arr);
+Console.WriteLine($"Сумма элементов, стоящих на нечетных позициях, равна {SumOfOddsPositions(arr)}");
+
+
+
 
 
 void FillArray(int[] array)
@@ -20,14 +21,14 @@ void FillArray(int[] array)
         array[i] = rnd.Next(-100, 101);
     }
 }
-int[] NewArrWithOdds(int[] array)
+int SumOfOddsPositions(int[] array)
 {
-    int[]arrForOdds=new int[10];
-    for (int i=0;i<array.Length;i++)
+    int sum = default;
+    for (int i = 1; i < array.Length; i++)
     {
-        if (array[i]%2!=0)arrForOdds[i]=array[i];
+        if (i % 2 != 0) sum += array[i];
     }
-    return arrForOdds;
+    return sum;
 }
 void PrintArray(int[] array)
 {
@@ -37,13 +38,4 @@ void PrintArray(int[] array)
         Console.Write($"{array[i]} ");
     }
     Console.WriteLine("]");
-}
-int SumOdds(int[] array)
-{
-    int sum=default;
-    for(int i=0;i<array.Length;i++)
-    {
-        sum+=array[i];
-    }
-    return sum;
 }
